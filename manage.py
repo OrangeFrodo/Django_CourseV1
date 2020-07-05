@@ -3,7 +3,6 @@
 import os
 import sys
 
-print ("hello world")
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CityCube.settings')
