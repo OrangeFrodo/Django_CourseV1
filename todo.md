@@ -29,3 +29,9 @@ Voucher Activation?
     Via user? 
     Club --> Users
                 Employes
+
+5. Tweets
+    creating
+    deleting 
+    retweeting
+    liking
