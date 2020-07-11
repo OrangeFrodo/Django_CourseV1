@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
+LOGIN_URL = "/login"
+
+MAX_TWEET_LENGTH = 240
+
 
 # Application definition
 
@@ -40,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third-party
+    "rest_framework",
+
+    # internal
     "News",
 ]
 
