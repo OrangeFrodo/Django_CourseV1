@@ -84,6 +84,11 @@ function handleTweetCreateFormDidSubmi(event) {
             window.location.href = "/login"
         }
 
+        else if (xhr.status === 403) {
+            alert("You must login!")
+            window.location.href = "/login"
+        }
+
         else if (xhr.status === 500) {
             alert("There was a server error, please try again")
         }
@@ -108,7 +113,7 @@ function loadTweets(tweetsElement) {
     xhr.open(method, url)
     xhr.onload = function() {
         const serverResponse = xhr.response
-        const listedItems = serverResponse.response // aray
+        const listedItems = serverResponse // aray
         var finalTweetStr = ""
         var i;
         for (i=0; i<listedItems.length; i++) {
@@ -125,6 +130,22 @@ loadTweets(tweetsContainerElement)
 
 function handleDidLike (tweet_id, currentCount) {
     console.log(tweet_id, currentCount)
+    const url = "/api/tweets/action"
+    const method = "POST"
+    const data = JSON.stringify({
+        id: tweet_id,
+        action: "like"
+    })
+    const xhr = new XMLHttpRequest()
+    xhr.open(method, url)
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.setRequestHeader("HTTP_X_REQUESTED_WITH", "XMLHttpRequest")
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+    xhr.onload = function() {
+        console.log(xhr.status, xhr.response)
+    }
+    xhr.send(data)
+    return
 }
 
 function LikeBtn(tweet) {
