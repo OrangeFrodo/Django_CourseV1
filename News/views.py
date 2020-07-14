@@ -71,8 +71,8 @@ def tweet_action_view(request, *args, **kwargs):
             return Response(serializer.data, status=200)
         elif action =="unlike":
             obj.likes.remove(request.user)
-        # elif action =="retweet":
-        #   pass          
+        elif action =="retweet":
+            pass          
     return Response({"message": "Tweet removed"}, status=200)
 
 
