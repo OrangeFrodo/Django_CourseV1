@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\daxoj\\.virtualenvs\\CityCube-iQQU1fsp\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\daxoj\\.virtualenvs\\CityCube-iQQU1fsp\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true
 }

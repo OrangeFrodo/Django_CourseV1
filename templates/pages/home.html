@@ -176,6 +176,11 @@ function LikeBtn(tweet) {
     tweet.id + "," + tweet.likes + ",'like')>" + tweet.likes + " Like</button>"
 }
 
+function Retweet(tweet) {
+    return "<button class='btn btn-outline-success' onclick=handleTweetActionBtn(" + 
+    tweet.id + "," + tweet.likes + ",'retweet')>Retweet</button>"
+}
+
 function formatTweetElement(tweet) {
     var formattedTweet = "<div class'mb-7 tweet col-10 col-md-10 mx-auto border rounded py-3' id='tweet-" +
     tweet.id
@@ -183,6 +188,7 @@ function formatTweetElement(tweet) {
         "</p><div class='btn-group'>" + 
             LikeBtn(tweet) +
             UnLikeBtn(tweet) +
+            Retweet(tweet) +
         "</div></div>"
     return formattedTweet
 }
