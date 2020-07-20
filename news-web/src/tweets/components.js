@@ -4,9 +4,17 @@ import {loadTweets} from "../lookup"
 
 export function TweetsComponent(props) {
   const textAreaRef = React.createRef()
+  const [newTweets, setNewTweets] = useState([])
   const handleSubmit = (event) => {
     event.preventDefault()
     const newVal = textAreaRef.current.value
+    let tempNewTweets = [...newTweets]
+    tempNewTweets.unshift({
+      content: newVal,
+      likes: 0,
+      id : 135
+    })
+    setNewTweets(tempNewTweets)
     console.log(newVal)
     textAreaRef.current.value = ""
   }
@@ -19,12 +27,19 @@ export function TweetsComponent(props) {
               <button type='submit' className='btn btn-primary my-3'>Tweet</button>
             </form>
             </div>
-        <TweetsList/>
+        <TweetsList newTweets={newTweets}/>
     </div> 
 }
 
-export function TweetsList(props){
+export function TweetsList(props) {
     const [tweetsInit, setTweetsInit] = useState([])
+    const [tweets, setTweets] = useState([])
+    useEffect(()=>{
+      const final = [...props.newTweets].concat(tweetsInit)
+      if (final.length !== tweets.length) {
+        setTweets(final)
+      }
+    }, [props.newTweets, tweets, tweetsInit])
   
     useEffect(() => {
       const myCallback = (response, status) => {
@@ -36,7 +51,7 @@ export function TweetsList(props){
       }
       loadTweets(myCallback)
     }, [])
-    return tweetsInit.map((item, index)=>{
+    return tweets.map((item, index)=>{
       return <Tweet tweet={item} className='my-5 py-5 border bg-white text-dark' key={`${index}-{item.id}`}/>
     })
   }
