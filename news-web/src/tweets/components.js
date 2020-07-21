@@ -65,7 +65,7 @@ export function ActionBtn(props) {
     
     const handleClick = (event) => {
       event.preventDefault()
-      if (action.type = "like") {
+      if (action.type === "like") {
         if (userLike === true) {
           setLikes(likes -+ 1)
           setUserLike(false)
