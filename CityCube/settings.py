@@ -148,16 +148,21 @@ DEFAULT_RENDER_CLASSES = [
         'rest_framework.renderers.JSONRenderer',
     ]
 
+DEFAULT_AUTHENTICATION_CLASSES = [
+    'rest_framework.authentication.SessionAuthentication',
+]
+
 if DEBUG:
     DEFAULT_RENDER_CLASSES += [
         'rest_framework.renderers.BrowsableAPIRenderer',
-        'rest_framework.renderers.JSONRenderer',
     ]
+    DEFAULT_AUTHENTICATION_CLASSES += [
+        "CityCube.rest_api.dev.DevAuthentication"
+    ]
+    
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': DEFAULT_AUTHENTICATION_CLASSES,
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDER_CLASSES
 }

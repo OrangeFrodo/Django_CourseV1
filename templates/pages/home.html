@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class='row mt-5'>
+<div class='row mt-5 d-none'>
     <h1 class='col text-center'>
         Welcome to VIBE app
     </h1>
 </div>
 
-<div class='row mb-3'>
+<div class='row mb-3 d-none'>
     <div class='col-md-4 mx-auto col-10'>
         <form class='form' id='tweet-create-form' method='POST' action='/tweet-create'>
                 {% csrf_token %}
@@ -21,7 +21,7 @@
 
 <div id="news"></div>
 
-<div id="tweets">
+<div id="tweets d-none">
     Loading...
 </div>
 
