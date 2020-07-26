@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 
     # internal
     "News",
+    'accounts',
+    'profiles',
 ]
 
 MIDDLEWARE = [
