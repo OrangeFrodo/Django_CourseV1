@@ -31,8 +31,8 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div id="container"></div>
-    <div class="news-detail" data-tweet-id=138 data-class-name='col-6 mx-auto'></div>
-    <div class='d-none' id='news' data-username="daxoja" data-can-tweet="false"></div>
+    <div class="d-none news-detail" data-tweet-id=138 data-class-name='col-6 mx-auto'></div>
+    <div id='news' data-username="daxoja" data-can-tweet="false"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,15 +43,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
 
-  <script>
-    const tweetEl = "<div class='news-detail' data-tweet-id=121 data-class-name='col-6 mx-auto'></div>"
-    const mainContainer = document.getElementById('container')
-    mainContainer.innerHTML = tweetEl
-  </script>
-  
-  <script src="/static/js/bundle.js"></script>
-  <script src="/static/js/0.chunk.js"></script>
-  <script src="/static/js/main.chunk.js"></script>
+    <script>
+      var path = window.location.pathname
+      var idRegex = /(?<tweetid>\d+)/
+      var match = path.match(idRegex)
+      if (match) {
+        var tweetId = match.groups.tweetid
+        var newsEl = document.getElementById('news')
+        newsEl.className = 'd-none'
+        var tweetEl = "<div class='news-detail' data-tweet-id="+ tweetId +" data-class-name='col-6 mx-auto'></div>"
+        var mainContainer = document.getElementById('container')
+        mainContainer.innerHTML = tweetEl
+      }
+    </script>
+    
+  </body>
 </html>

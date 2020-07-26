@@ -1,7 +1,6 @@
 from django.urls import path
 
-from News.views import (
-    home_view,
+from .views import (
     tweet_delete_view,
     tweet_detail_view, 
     tweet_list_view, 
