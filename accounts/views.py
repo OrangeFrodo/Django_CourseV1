@@ -36,6 +36,7 @@ def register_view(request, *args, **kwargs):
         user.set_password(form.cleaned_data.get("password1"))
         login (request, user)
         # print(form.cleaned_data)
+        return redirect("/")
     context = {
         "form": form,
         "btn_label": "Register",
